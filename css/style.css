@@ -1,0 +1,201 @@
+:root {
+  --primary: #2c3e50;
+  --secondary: #34495e;
+  --accent: #3b82f6;
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --nav-width: 240px;
+}
+
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Sticky header */
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Brand logo */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff;
+  text-decoration: none;
+}
+.brand .logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.brand h1 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* Top navigation (desktop) */
+.topnav {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+.topnav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-weight: 500;
+  transition: background .15s ease, transform .06s ease;
+}
+.topnav a:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+
+/* Support button */
+.support-btn {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.12);
+}
+.support-btn:hover { filter: brightness(.98); }
+
+/* Drawer menu (mobile) */
+nav.drawer {
+  position: fixed;
+  top: 0;
+  left: calc(-1 * var(--nav-width));
+  width: var(--nav-width);
+  height: 100%;
+  background: var(--secondary);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  transition: left .28s ease;
+  z-index: 1300;
+}
+nav.drawer.active { left: 0; }
+nav.drawer .close-btn {
+  align-self: flex-end;
+  font-size: 1.25rem;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+nav.drawer a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  font-weight: 500;
+}
+nav.drawer a:hover { background: rgba(255,255,255,0.04); }
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  z-index: 1250;
+}
+.overlay.active { display: block; }
+
+/* Content */
+.container { max-width: 1200px; margin: 1.25rem auto; padding: 1rem; }
+main { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media(min-width:900px) {
+  main { grid-template-columns: 2fr 1fr; }
+}
+.card {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* Footer */
+footer.site-footer {
+  margin-top: 1.5rem;
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+.social-links {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.social-links a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+.social-links a:hover { background: rgba(255,255,255,0.04); }
+
+/* Responsive rules */
+@media(min-width:769px) {
+  .menu-icon { display: none; }
+  .brand { display: flex; }
+  .topnav { display: flex; }
+  nav.drawer { display: none; }
+  .overlay { display: none; }
+}
+@media(max-width:768px) {
+  .brand { display: none; }
+  .topnav { display: none; }
+  .menu-icon { display: flex; }
+  .support-btn { padding: 0.45rem 0.8rem; font-size: 0.95rem; }
+}
+
+/* Headings */
+h2 { color: var(--primary); margin-bottom: 0.5rem; }
+p, li { color: var(--text); }
+ul { padding-left: 1.1rem; }
